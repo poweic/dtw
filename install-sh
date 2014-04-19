@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ ! -d libdtw ]; then
+  git clone https://github.com/chunan/libdtw.git
+  cd libdtw && sed -i "s%-Wall -Werror%-w%g" Makefile && make && cd -
+  cp -r libdtw/test/data/ ./
+fi
+
+if [ ! -d libfeature ]; then
+  git clone https://github.com/chunan/libfeature.git
+  cd libfeature && make && cd -
+fi
+
+if [ ! -d libutility ]; then
+  git clone https://github.com/chunan/libutility.git
+  cd libfeature && make && cd -
+fi
+
+if [ ! -d libsegtree ]; then
+  git clone https://github.com/chunan/libsegtree.git
+  cd libfeature && make && cd -
+fi
+
+mkdir -p include/
+if [ ! -f include/cmdparser.h ]; then
+  wget https://raw.githubusercontent.com/botonchou/utility/master/include/cmdparser.h -P include/
+fi
+
+make
