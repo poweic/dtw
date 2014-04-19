@@ -18,13 +18,13 @@ fi
 
 mkdir -p include/
 if [ ! -f include/cmdparser.h ]; then
-  wget https://raw.githubusercontent.com/botonchou/utility/master/include/cmdparser.h -P include/
+  wget https://raw.githubusercontent.com/botonchou/utility/master/include/cmdparser.h --no-check-certificate -P include/
 fi
 
 cd libdtw/ && sed -i "s%-Wall -Werror%-w%g" Makefile && make && cd -
 cp -r libdtw/test/data/ ./
 cd libfeature/ && make && cd -
-cd libfeature/ && make && cd -
-cd libfeature/ && make && cd -
+cd libutility/ && make && cd -
+cd libsegtree/ && make && cd -
 
 make
